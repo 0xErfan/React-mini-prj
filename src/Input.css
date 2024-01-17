@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.news {
+    content: "";
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    color: antiquewhite;
+    background-color: gray;
+    top: -1.2rem;
+    left: 1.7rem;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign-form {
+    background-image: url("images/city.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.ticketPage {
+    background-image: url("images/sky.jpg");
+    background-size: cover;
+    background-position: center;
+}
