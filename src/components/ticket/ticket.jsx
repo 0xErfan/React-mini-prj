@@ -15,8 +15,9 @@ export default class Ticket extends React.Component {
             ],
             isSelected: 0,
             isValid: 0,
+            isFilled: 0,
             selectedCity: "",
-            selectedCountry: "",
+            selectedCountry: 0,
         }
 
         this.defaultState = { ...this.state }
@@ -31,38 +32,38 @@ export default class Ticket extends React.Component {
 
         this.setState({
             isSelected: 1,
-            selectedCountry: foundedCities
+            selectedCountry: foundedCities,
+            selectedCity: foundedCities[2][0]
         })
     }
 
     submitBuy() {
 
-        const { isSelected, selectedCountry, username } = this.state;
+        const { isSelected, selectedCountry, username, selectedCity } = this.state;
 
-        if (username.length) {
+        if (username.length && selectedCity) {
             this.setState({ isValid: 1 });
-
-            isSelected && selectedCountry && (
-                setTimeout(() => {
-                    this.setState(this.defaultState)
-                }, 3000)
-            )
+            isSelected && selectedCountry && setTimeout(() => this.setState(this.defaultState), 2500)
+        } else {
+            this.setState({isFilled: 1})
+            setTimeout(() => this.setState({isFilled: 0}), 2500)
         }
     }
 
     render() {
 
-        const { username, places, selectedCountry, isValid, selectedCity } = this.state;
+        const { username, places, selectedCountry, isValid, selectedCity, isFilled } = this.state;
 
         return (
             <section className="ticketPage bg-gray-500 py-12 ch:md:grid-cols-2">
                 <div className={`w-[80%] bg-gray-600 text-center text-xl py-2 m-auto rounded-xl my-2 text-white ${isValid ? "block" : "hidden"}`}>Ticket of {selectedCountry[1]} / {selectedCity} reserved successfully Mr/Ms {username}</div>
+                <div className={`w-[80%] bg-red-400 text-center text-xl py-2 m-auto rounded-xl my-2 text-white ${isFilled ? "block" : "hidden"}`}>Fill your name and select your path correctly!</div>
 
                 <div className="box space-y-4">
                     <input type="text" className="fnameInput outline-none border invalid:border-red-700" required onChange={e => this.setState({ username: e.target.value })} value={username} placeholder="Your name" />
 
                     <select onChange={e => this.changeHandler(e.target.value)} className="countrySelect">
-                        <option disabled selected value="Please Select">Select the country ...</option>
+                        <option selected disabled value="Select Country">Select the country ...</option>
                         {
                             places.map(place => <option key={place[0]} className="option" value={place[1]}>{place[1]}</option>)
                         }
@@ -72,9 +73,8 @@ export default class Ticket extends React.Component {
                     {
                         this.state.isSelected ? (
                             <select onChange={e => this.setState({ selectedCity: e.target.value })} className="citySelect">
-                                <option selected disabled value="-1">Select City ...</option>
                                 {
-                                    selectedCountry[2].map(city => <option value={city}>{city}</option>)
+                                    selectedCountry[2].map((city, index) => <option key={index} value={city}>{city}</option>)
                                 }
                             </select>
                         ) : null
