@@ -5,6 +5,7 @@ import News from "./components/news/news"
 import FormValidation from "./components/Form/form"
 import Quiz from "./components/quiz/quiz"
 import Ticket from "./components/ticket/ticket"
+import BookList from "./components/bookList/bookList"
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
             <FormValidation/>
             <Quiz/>
             <Ticket />
+            <BookList />
         </div>
     )
 }
