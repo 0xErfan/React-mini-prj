@@ -31,3 +31,7 @@
     background-size: cover;
     background-position: center;
 }
+
+.todo_topic {
+    text-shadow: 1px 4px 8px aqua;
+}

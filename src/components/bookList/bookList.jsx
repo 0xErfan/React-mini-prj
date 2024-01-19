@@ -46,7 +46,7 @@ export default class BookList extends React.Component {
     render() {
         const { bookTitle, bookAuthor, bookYear, isFilled } = this.state
         return (
-            <section className="w-full m-auto p-8 h-auto py-4 bg-gray-200 text-black relative">
+            <section className="flex items-center justify-center w-full m-auto p-8 h-auto py-4 bg-gray-200 text-black relative">
 
                 <div className={`flex justify-center w-[60%] m-auto absolute right-0 left-0 py-4 rounded-xl bg-red-500 transition-all duration-300 text-xl text-white text-center ${isFilled ? "opacity-1" : "opacity-0"}`}>Please fill the dataes first!</div>
                 <div className="max-w-[900px] w-full">

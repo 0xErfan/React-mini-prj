@@ -45,8 +45,8 @@ export default class Ticket extends React.Component {
             this.setState({ isValid: 1 });
             isSelected && selectedCountry && setTimeout(() => this.setState(this.defaultState), 2500)
         } else {
-            this.setState({isFilled: 1})
-            setTimeout(() => this.setState({isFilled: 0}), 2500)
+            this.setState({ isFilled: 1 })
+            setTimeout(() => this.setState({ isFilled: 0 }), 2500)
         }
     }
 
