@@ -7,6 +7,7 @@ import Quiz from "./components/quiz/quiz"
 import Ticket from "./components/ticket/ticket"
 import BookList from "./components/bookList/bookList"
 import Todo from "./components/todo/todo"
+import ShopBasket from "./components/shopBasket/ShopBasket"
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
             <Ticket />
             <BookList />
             <Todo />
+            <ShopBasket />
         </div>
     )
 }
