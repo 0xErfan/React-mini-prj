@@ -8,6 +8,7 @@ import Ticket from "./components/ticket/ticket"
 import BookList from "./components/bookList/bookList"
 import Todo from "./components/todo/todo"
 import ShopBasket from "./components/shopBasket/ShopBasket"
+import HOCExsersize from "./components/HOCExsersize/HOCExsersize"
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
             <BookList />
             <Todo />
             <ShopBasket />
+            <HOCExsersize />
         </div>
     )
 }
