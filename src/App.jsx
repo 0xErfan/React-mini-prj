@@ -8,6 +8,7 @@ import BookList from "./components/bookList/bookList"
 import Todo from "./components/todo/todo"
 import ShopBasket from "./components/shopBasket/ShopBasket"
 import HOCExsersize from "./components/HOCExsersize/HOCExsersize"
+import RestaurantMenu from "./components/RestaurantMenu/RestaurantMenu"
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
             <Todo />
             <ShopBasket />
             <HOCExsersize />
+            <RestaurantMenu />
         </div>
     )
 }

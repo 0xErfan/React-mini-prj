@@ -3,6 +3,20 @@
 @tailwind utilities;
 
 
+::-webkit-scrollbar {
+    width: .6rem;
+}
+
+::-webkit-scrollbar-thumb {
+    transition: all 0.3s ease;
+    background-color: #929292;
+    border-radius: 2rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #837e7e;
+}
+
 .news {
     content: "";
     position: absolute;
@@ -36,6 +50,25 @@
     text-shadow: 1px 4px 8px aqua;
 }
 
+.restaurantTopic {
+    @apply text-3xl text-black text-center relative font-bold
+}
+
+.restaurantTopic::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 2.5rem;
+    border-radius: 1rem;
+    transform: translateX(-50%);
+    height: .2rem;
+    background-color: orange;
+    width: 2.7rem;
+}
+
+.activeMenu {
+    @apply bg-orange-500 text-white
+}
 
 .question {
     padding: 1rem 1.5rem;
