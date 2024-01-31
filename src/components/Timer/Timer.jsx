@@ -1,22 +1,38 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { CiStop1 } from "react-icons/ci";
 import { IoReload } from "react-icons/io5";
 import { VscDebugStart } from "react-icons/vsc";
 
 export default function Timer() {
-    const [isPaused, setIsPaused] = useState(0)
-    const [countDown, setCountsown] = useState({
-        hour: 0,
-        minute: 0,
-        second: 0
-    })
+    const [status, setStatus] = useState("paused")
+    const [hour, setHour] = useState(0)
+    const [min, setMin] = useState(59)
+    const [sec, setSec] = useState(59)
 
-    const countDownStart = (status = "") => {
-        if (isPaused) return;
-        setIsPaused(1) 
-        const interval = setInterval(() => {
-            setCountsown(preve => ({ ...preve, second: preve.second + 1 }))
-        }, 1000)
+    useEffect(() => {
+        let interval;
+
+        if (status == "running") {
+            interval = setInterval(() => {
+                if (sec == 59) {
+                    setSec(0)
+                    setMin(preve => preve + 1)
+                } else if (min == 60) {
+                    setMin(0);
+                    setSec(0);
+                    setHour(preve => preve + 1)
+                } else setSec(preve => preve + 1)
+            }, 1000)
+        } else clearInterval(interval)
+
+        return () => clearInterval(interval)
+    }, [status, sec, min])
+
+    const resetHandler = () => {
+        setHour(0);
+        setMin(0);
+        setSec(0);
+        setStatus("paused")
     }
 
     return (
@@ -26,19 +42,18 @@ export default function Timer() {
 
                     <div className='circle'>
                         <p className='flex items-center size-full justify-center rounded-md text-4xl font-semibold p-2'>
-                            <span className=' p-2 rounded-md bg-white tracking-wide'>{(countDown.hour).toString().padStart(2, 0)}:{(countDown.minute).toString().padStart(2, 0)}:{(countDown.second).toString().padStart(2, 0)}</span>
+                            <span className=' p-2 rounded-md bg-white tracking-wide'>{hour.toString().padStart(2, 0)}:{min.toString().padStart(2, 0)}:{sec.toString().padStart(2, 0)}</span>
                         </p>
-                        {/* <circle className='circle bg-red-500' r={70} cx={70} cy={70} /> */}
                     </div>
                     <div className='flex items-center justify-evenly ch:cursor-pointer ch:duration-200 mt-20'>
-                        <div onClick={countDownStart} className='flex items-center justify-center hover:bg-purple-800  hover:text-white text-purple-800 rounded-full p-2 border border-purple-500'>
+                        <div onClick={() => setStatus("running")} className='flex items-center justify-center hover:bg-purple-800  hover:text-white text-purple-800 rounded-full p-2 border border-purple-500'>
                             <VscDebugStart className='ch: size-6 rounded-md' />
                         </div>
-                        <div onClick={() => countDownStart(1)} className='flex items-center justify-center rounded-full bg-purple-800 gap-3 text-white py-2 px-4 border border-purple-500'>
+                        <div onClick={() => setStatus("paused")} className='flex items-center justify-center rounded-full bg-purple-800 gap-3 text-white py-2 px-4 border border-purple-500'>
                             <CiStop1 className='ch: size-6 rounded-md' />
-                            <p>Pause</p>
+                            <p>stop</p>
                         </div>
-                        <div onClick={countDownStart} className='flex items-center justify-center hover:bg-purple-800  hover:text-white rounded-full text-purple-800 p-2 border border-purple-500'>
+                        <div onClick={resetHandler} className='flex items-center justify-center hover:bg-purple-800  hover:text-white rounded-full text-purple-800 p-2 border border-purple-500'>
                             <IoReload className='ch: size-6' />
                         </div>
                     </div>
