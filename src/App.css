@@ -627,12 +627,20 @@ video {
   margin-top: 3rem !important;
 }
 
+.mt-2 {
+  margin-top: 0.5rem !important;
+}
+
 .mt-20 {
   margin-top: 5rem !important;
 }
 
 .mt-4 {
   margin-top: 1rem !important;
+}
+
+.mt-9 {
+  margin-top: 2.25rem !important;
 }
 
 .mt-auto {
@@ -869,6 +877,10 @@ video {
 
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+}
+
+.grid-cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
 }
 
 .flex-col {
@@ -1639,6 +1651,15 @@ video {
   margin-left: 1rem;
   align-self: center;
   min-width: 2rem;
+}
+
+.\*\:size-8 > * {
+  width: 2rem !important;
+  height: 2rem !important;
+}
+
+.\*\:h-14 > * {
+  height: 3.5rem !important;
 }
 
 .\*\:text-white\/80 > * {

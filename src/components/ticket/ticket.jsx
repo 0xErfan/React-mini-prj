@@ -55,7 +55,7 @@ export default class Ticket extends React.Component {
         const { username, places, selectedCountry, isValid, selectedCity, isFilled } = this.state;
 
         return (
-            <section className="ticketPage bg-gray-500 py-12 ch:md:grid-cols-2">
+            <section className="ticketPage bg-gray-500 py-24 ch:md:grid-cols-2">
                 <div className={`w-[80%] bg-gray-600 text-center text-xl py-2 m-auto rounded-xl my-2 text-white ${isValid ? "block" : "hidden"}`}>Ticket of {selectedCountry[1]} / {selectedCity} reserved successfully Mr/Ms {username}</div>
                 <div className={`w-[80%] bg-red-400 text-center text-xl py-2 m-auto rounded-xl my-2 text-white ${isFilled ? "block" : "hidden"}`}>Fill your name and select your path correctly!</div>
 

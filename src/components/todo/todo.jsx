@@ -79,7 +79,7 @@ export default class Todo extends React.Component {
         }
 
         return (
-            <section className="flex items-center w-full justify-center p-6 bg-gradient-to-r from-blue-500 to-purple-600 relative">
+            <section className="flex items-center w-full justify-center px-6 py-28 bg-gradient-to-r from-blue-500 to-purple-600 relative">
 
                 <div className={`bg-red-400 text-center text-xl py-3 m-auto rounded-xl transition-all w-[80%] duration-200 my-2 text-white ${isFilled ? "opacity-1 absolute" : "opacity-0 hidden"}`}>Enter your todo title first!</div>
 

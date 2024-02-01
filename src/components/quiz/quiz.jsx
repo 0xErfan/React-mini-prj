@@ -45,7 +45,7 @@ class Quiz extends React.Component {
     render() {
 
         return (
-            <section className="flex items-center justify-center w-full h-[400px] bg-gray-400">
+            <section className="flex items-center justify-center py-28 w-full bg-gray-400">
                 <Questions {...this.state.questions} />
             </section>
         )
