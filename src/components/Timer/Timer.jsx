@@ -6,8 +6,8 @@ import { VscDebugStart } from "react-icons/vsc";
 export default function Timer() {
     const [status, setStatus] = useState("paused")
     const [hour, setHour] = useState(0)
-    const [min, setMin] = useState(59)
-    const [sec, setSec] = useState(59)
+    const [min, setMin] = useState(0)
+    const [sec, setSec] = useState(0)
 
     useEffect(() => {
         let interval;

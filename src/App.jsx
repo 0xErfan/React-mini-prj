@@ -10,6 +10,7 @@ import Todo from "./components/todo/todo"
 import ShopBasket from "./components/shopBasket/ShopBasket"
 import HOCExsersize from "./components/HOCExsersize/HOCExsersize"
 import RestaurantMenu from "./components/RestaurantMenu/RestaurantMenu"
+import ProMusicPlayer from "./components/ProMusicPlayer/ProMusicPlayer"
 
 function App() {
     return (
@@ -25,6 +26,7 @@ function App() {
             <ShopBasket />
             <HOCExsersize />
             <RestaurantMenu />
+            <ProMusicPlayer />
         </div>
     )
 }

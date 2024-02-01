@@ -87,6 +87,20 @@
     justify-content: center;
 }
 
+.neoM-buttons {
+    border-radius: 5px;
+    background: #2C2F33;
+    box-shadow: 5px 5px 6px #1f2124,
+        -5px -5px 6px #393d42;
+}
+
+.neoM-bg {
+    border-radius: 6px;
+    background: #2C2F33;
+    box-shadow: inset 5px 5px 8px #1f2124,
+        inset -5px -5px 8px #393d42;
+}
+
 .question {
     padding: 1rem 1.5rem;
     border: 2px solid gray;
