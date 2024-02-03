@@ -3,7 +3,7 @@ export default function Product(props) {
     const { src, title, price, onBuy, id } = props;
 
     return (
-        <div className="flex flex-col justify-between gap-1 items-center overflow-hidden hover:-translate-y-2 duration-300 transition-all flex-grow rounded-xl p-4 bg-white text-center">
+        <div className="flex flex-col justify-between gap-1 items-center overflow-hidden hover:-translate-y-2 min-h-[330px] duration-300 transition-all flex-grow rounded-xl p-4 bg-white text-center">
             <div className="w-full h-[65%]">
                 <img className="size-full object-cover shrink-0" src={src} />
             </div>
