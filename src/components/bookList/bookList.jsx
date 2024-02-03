@@ -1,19 +1,18 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { FaBookOpen } from "react-icons/fa";
 
 export default function BookList() {
-
-    const clicks = useRef()
 
     const [booksList, setBooksList] = useState([])
     const [bookTitle, setBookTitle] = useState("")
     const [bookAuthor, setBookAuthor] = useState("")
     const [bookYear, setBookYear] = useState("")
     const [isFilled, setIsFilled] = useState(0)
-
+    const [isSubmitting, setIsSubmitting] = useState(0)
 
     const submithandler = e => {
         e.preventDefault()
+        setIsSubmitting(1)
 
         if (bookTitle.trim().length && bookAuthor.trim().length && bookYear.trim().length) {
 
@@ -25,17 +24,17 @@ export default function BookList() {
             }
 
             setBooksList(preve => [...preve,newBook])
-            
 
             setTimeout(() => {
                 setBookAuthor("")
                 setBookTitle("")
                 setBookYear("")
-            }, 1000)
+                setIsSubmitting(0)
+            }, 500)
 
         } else {
             setIsFilled(1)
-            setTimeout(() => setIsFilled(0), 2500)
+            setTimeout(() => { setIsFilled(0), setIsSubmitting(0)}, 2500)
         }
     }
 
@@ -64,29 +63,32 @@ export default function BookList() {
                         <input value={bookYear} onChange={e => setBookYear(e.target.value )} className="w-full py-2 px-3 rounded-md border border-gray-800" type="text" placeholder="Year of Book foundation" />
                     </label>
 
-                    <input onClick={e => submithandler(e)} className="w-full py-2 px-3 rounded-md border border-gray-800 hover:bg-orange-600 duration-200 transition-all text-white bg-orange-500" type="submit" value="Add Book" />
+                    <input disabled={isSubmitting} onClick={e => submithandler(e)} className="w-full py-2 px-3 rounded-md border border-gray-800 hover:bg-orange-600 duration-200 transition-all text-white bg-orange-500" type="submit" value="Add Book" />
                 </form>
 
                 <table className="w-full text-center mt-12">
-                    <tr className="ch:border ch:border-gray-500 mt-10">
-                        <th>Title</th>
-                        <th>Author</th>
-                        <th>Year</th>
-                    </tr>
+                    <tbody>
+                        <tr className="ch:border ch:border-gray-500 mt-10">
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Year</th>
+                        </tr>
+                        {
+                            booksList.length > 0 && (
+                                booksList.map(book => {
+                                    return (
+                                        <tr key={book.id} className=" even:bg-gray-400 ch:border ch:border-gray-500 overflow-auto">
+                                            <td>{book.title}</td>
+                                            <td>{book.author}</td>
+                                            <td>{book.year}</td>
+                                        </tr>
+                                    )
+                                })
+                            )
+                        }
+                    </tbody>
 
-                    {
-                        booksList.length > 0 && (
-                            booksList.map(book => {
-                                return (
-                                    <tr key={book.id} className=" even:bg-gray-400 ch:border ch:border-gray-500 overflow-auto">
-                                        <td>{book.title}</td>
-                                        <td>{book.author}</td>
-                                        <td>{book.year}</td>
-                                    </tr>
-                                )
-                            })
-                        )
-                    }
+
                 </table>
 
                 {

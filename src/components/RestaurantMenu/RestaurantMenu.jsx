@@ -92,18 +92,20 @@ export default function RestaurantMenu() {
 
     return (
         <section className="px-12 py-20 bg-red-100/25">
-            <h2 className="restaurantTopic">Our Menu</h2>
-            <ul className="flex items-center mt-12 text-xl justify-center gap-4 ch:cursor-pointer ch:duration-200 text-orange-500">
-                <li onClick={() => setActiveMenu("all")} className={`py-2 px-6 rounded-xl ${activeMenu.toLowerCase() == "all" && "activeMenu"}`}>All</li>
-                <li onClick={() => setActiveMenu("breakfast")} className={`py-2 px-6 rounded-xl ${activeMenu.toLowerCase() == "breakfast" && "activeMenu"}`}>Breakfast</li>
-                <li onClick={() => setActiveMenu("lunch")} className={`py-2 px-6 rounded-xl ${activeMenu.toLowerCase() == "lunch" && "activeMenu"}`}>Lunch</li>
-                <li onClick={() => setActiveMenu("shakes")} className={`py-2 px-6 rounded-xl ${activeMenu.toLowerCase() == "shakes" && "activeMenu"}`}>Shakes</li>
-            </ul>
+            <div className="container">
+                <h2 className="restaurantTopic">Our Menu</h2>
+                <ul className="flex items-center mt-12 text-xl justify-center gap-4 ch:cursor-pointer ch:duration-200 text-orange-500">
+                    <li onClick={() => setActiveMenu("all")} className={`py-2 px-6 rounded-xl ${activeMenu.toLowerCase() == "all" && "activeMenu"}`}>All</li>
+                    <li onClick={() => setActiveMenu("breakfast")} className={`py-2 px-6 rounded-xl ${activeMenu.toLowerCase() == "breakfast" && "activeMenu"}`}>Breakfast</li>
+                    <li onClick={() => setActiveMenu("lunch")} className={`py-2 px-6 rounded-xl ${activeMenu.toLowerCase() == "lunch" && "activeMenu"}`}>Lunch</li>
+                    <li onClick={() => setActiveMenu("shakes")} className={`py-2 px-6 rounded-xl ${activeMenu.toLowerCase() == "shakes" && "activeMenu"}`}>Shakes</li>
+                </ul>
 
-            <div className="grid grid-col-1 md:grid-cols-2 gap-6 mt-12">
-                {
-                    filteredMenu.map(data => <Menu key={data.id} {...data} />)
-                }
+                <div className="grid grid-col-1 md:grid-cols-2 gap-6 mt-12">
+                    {
+                        filteredMenu.map(data => <Menu key={data.id} {...data} />)
+                    }
+                </div>
             </div>
         </section>
     )

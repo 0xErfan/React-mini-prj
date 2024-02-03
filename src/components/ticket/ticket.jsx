@@ -62,8 +62,8 @@ export default class Ticket extends React.Component {
                 <div className="box space-y-4">
                     <input type="text" className="fnameInput outline-none border invalid:border-red-700" required onChange={e => this.setState({ username: e.target.value })} value={username} placeholder="Your name" />
 
-                    <select onChange={e => this.changeHandler(e.target.value)} className="countrySelect">
-                        <option selected disabled value="Select Country">Select the country ...</option>
+                    <select defaultValue={'DEFAULT'} onChange={e => this.changeHandler(e.target.value)} className="countrySelect">
+                        <option disabled value="DEFAULT">Select the country ...</option>
                         {
                             places.map(place => <option key={place[0]} className="option" value={place[1]}>{place[1]}</option>)
                         }

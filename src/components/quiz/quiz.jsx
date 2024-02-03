@@ -6,6 +6,7 @@ class Quiz extends React.Component {
         super()
 
         this.state = {
+            isAnswering: 1,
             score: 0,
             questionNum: 0,
             show: false,
@@ -20,13 +21,11 @@ class Quiz extends React.Component {
         this.reset = this.reset.bind(this)
     }
 
-
     getAnswer(e) {
-
         const { questions, questionNum } = this.state
         const CurrentQuestion = questions[questionNum]
 
-
+        this.setState({ isAnswering: 0})
         this.setState({ show: true })
 
         setTimeout(() => {
@@ -34,8 +33,9 @@ class Quiz extends React.Component {
             this.setState(preveState => ({
                 questionNum: preveState.questionNum + 1,
                 show: false,
+                isAnswering: 1
             }))
-        }, 500);
+        }, 800);
     }
 
     reset() {
@@ -45,18 +45,17 @@ class Quiz extends React.Component {
     render() {
 
         return (
-            <section className="flex items-center justify-center py-28 w-full bg-gray-400">
+            <section  className="flex items-center justify-center py-28 w-full bg-gray-400">
                 <Questions {...this.state.questions} />
             </section>
         )
     }
 }
-
 class Questions extends Quiz {
 
     render() {
 
-        const { questions, questionNum, show, score } = this.state
+        const { questions, questionNum, isAnswering, show, score } = this.state
         const CurrentQuestion = questions[questionNum]
 
         return (
@@ -68,7 +67,7 @@ class Questions extends Quiz {
                             <ul className={`flex flex-col w-full gap-3 ch:w-full ch:text-xl ch:cursor-pointer ch:border-2  ch:duration-100 ch:transition-all  ch:rounded-xl ch:p-2`}>
                                 {
                                     CurrentQuestion.items.map((item, index) => {
-                                        return <li onClick={e => this.getAnswer(e)} className={`${show ? (item == CurrentQuestion.answer ? "border-green-500" : "border-red-500") : "border-sky-600"} `} key={index}>{item}</li>
+                                        return <li onClick={e => isAnswering ? this.getAnswer(e) : null } className={`${show ? (item == CurrentQuestion.answer ? "border-green-500" : "border-red-500") : "border-sky-600"} `} key={index}>{item}</li>
                                     })
                                 }
                             </ul>
