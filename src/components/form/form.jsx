@@ -21,7 +21,7 @@ export default function Form() {
     }
 
     return (
-        <section className="sign-form flex items-center justify-center w-full h-[600px] *:text-white/80">
+        <section className=" style="background-image: url(images/city.jpg)" sign-form flex items-center justify-center w-full h-[600px] *:text-white/80">
             <div className="max-w-[520px] w-full p-4 bg-transparent backdrop-blur-md border rounded-md border-white/50">
                 <p className="text-2xl text-center pb-6">Sign-In</p>
                 <form className="flex flex-col gap-4">
