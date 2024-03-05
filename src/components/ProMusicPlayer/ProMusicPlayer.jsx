@@ -10,9 +10,14 @@ import { FaHeart } from "react-icons/fa";
 import Buttons from './Buttons';
 import Recently from './Recently';
 
+const promptShow = () => {
+    let shouldRedirect = prompt("Full version of this music palyer is available at https://0xerfan.github.io/Music-player/")
+    shouldRedirect && location.href = "0xerfan.github.io/Music-player/"
+}
+
 export default function ProMusicPlayer() {
     return (
-        <section onClick={() => alert("Full version of this music palyer will be available soon(:")} className=' bg-black/90  py-28 text-[#DFDFDF]'>
+        <section onClick={promptShow} className=' bg-black/90  py-28 text-[#DFDFDF]'>
             <div className='container max-w-[500px] w-full bg-[#2C2F33]'>
                 <div className='flex items-center gap-2 h-12'>
                     <div className='flex items-center justify-center h-full neoM-buttons cursor-pointer flex-1'><IoReorderThreeOutline className="size-8" /></div>
